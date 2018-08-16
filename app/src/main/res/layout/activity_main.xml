@@ -4,10 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="vm"
             type="com.whlr.fmtelemetry.viewmodels.MainViewModel" />
+
         <import type="com.whlr.fmtelemetry.models.Telemetry" />
+
         <import type="java.sql.Timestamp" />
     </data>
 
@@ -55,8 +58,8 @@
             android:layout_marginRight="8dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
-            android:text="Start"
             android:onClick="@{()->vm.start()}"
+            android:text="Start"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView" />
@@ -70,7 +73,7 @@
             android:layout_marginLeft="8dp"
             android:layout_marginRight="8dp"
             android:layout_marginStart="8dp"
-            android:text="@{vm.telemetry.timestampMS.toString()}"
+            android:text="@{vm.telemetry.timestampMS.toString(), default=`01.01.2001 12:34`}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />

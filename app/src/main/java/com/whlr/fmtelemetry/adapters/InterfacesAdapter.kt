@@ -16,8 +16,8 @@ class InterfacesAdapter(val context: Context) : RecyclerView.Adapter<InterfacesA
         val addrAdapter = AddressesAdapter(context)
 
         init {
-            binding.addressesView.adapter = addrAdapter
-            binding.addressesView.layoutManager = LinearLayoutManager(context)
+            binding.addressesValue.adapter = addrAdapter
+            binding.addressesValue.layoutManager = LinearLayoutManager(context)
         }
     }
 
