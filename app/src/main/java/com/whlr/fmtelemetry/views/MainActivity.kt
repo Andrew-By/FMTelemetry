@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import com.whlr.fmtelemetry.R
 import com.whlr.fmtelemetry.adapters.InterfacesAdapter
+import com.whlr.fmtelemetry.adapters.TelemetryPagerAdapter
 import com.whlr.fmtelemetry.databinding.ActivityMainBinding
 import com.whlr.fmtelemetry.viewmodels.MainViewModel
 import kotlinx.android.synthetic.main.activity_main.*
@@ -30,5 +31,7 @@ class MainActivity : AppCompatActivity() {
             adapter = ifaceAdapter
             layoutManager = LinearLayoutManager(context)
         }
+
+        pager.adapter = TelemetryPagerAdapter(supportFragmentManager)
     }
 }
