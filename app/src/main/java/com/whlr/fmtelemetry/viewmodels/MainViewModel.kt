@@ -13,13 +13,10 @@ class MainViewModel : ViewModel() {
 
     private val telemetryService = TelemetryService()
 
-    val interfaces = MutableLiveData<List<InetAddress>>()
-
     val telemetry = MutableLiveData<Telemetry>()
 
     init {
         telemetryService.OnTelemetryUpdated = { telemetry.postValue(it) }
-        getAddresses()
     }
 
     fun start() {
@@ -30,20 +27,5 @@ class MainViewModel : ViewModel() {
 
     fun stop() {
         telemetryService.canRun = false
-    }
-
-    private fun getAddresses() {
-
-        val addrList = mutableListOf<InetAddress>()
-        for (iFace in NetworkInterface.getNetworkInterfaces()) {
-            Log.d("IP", "Interface: ${iFace.displayName}")
-            for (addr in iFace.inetAddresses) {
-                if (addr.isSiteLocalAddress && addr is Inet4Address) {
-                    addrList.add(addr)
-                }
-            }
-        }
-        interfaces.postValue(addrList)
-
     }
 }
