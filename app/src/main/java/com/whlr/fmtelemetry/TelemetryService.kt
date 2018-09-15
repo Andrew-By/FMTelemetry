@@ -4,6 +4,7 @@ import com.whlr.fmtelemetry.models.Telemetry
 import java.net.DatagramPacket
 import java.net.DatagramSocket
 import java.nio.ByteBuffer
+import java.nio.ByteOrder
 
 class TelemetryService : Runnable {
     private val sock = DatagramSocket(8888)
@@ -19,7 +20,7 @@ class TelemetryService : Runnable {
         while (canRun) {
             sock.receive(packet)
             OnTelemetryUpdated?.let{
-                it.invoke(Telemetry(ByteBuffer.wrap(packet.data)))
+                it.invoke(Telemetry(ByteBuffer.wrap(packet.data).order(ByteOrder.LITTLE_ENDIAN)))
             }
         }
     }
